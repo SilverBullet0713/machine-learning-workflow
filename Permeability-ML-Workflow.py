@@ -298,7 +298,7 @@ def train_and_evaluate_final_model(best_params):
 
     return final_model, final_encoder, final_scaler
 
-# 6.模型解释 (Model Interpretation)
+# 5.模型解释 (Model Interpretation)
 def run_model_interpretation(model, encoder, scaler):
     print("--- 开始执行: 模型解释 ---")
     train_data = pd.read_csv(TRAIN_DATA_PATH)
@@ -397,7 +397,7 @@ def run_model_interpretation(model, encoder, scaler):
 
     print("-" * 30 + "\n")
 
-# 7.主函数入口
+# 6.主函数入口
 if __name__ == '__main__':
     run_data_preprocessing()
     # run_model_selection()
@@ -412,3 +412,4 @@ if __name__ == '__main__':
     run_model_interpretation(final_model, final_encoder, final_scaler)
 
     print("所有流程执行完毕")
+
