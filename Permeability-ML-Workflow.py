@@ -88,7 +88,7 @@ def run_data_preprocessing():
     print(f"预处理完成，测试数据已保存至: {TEST_DATA_PATH}")
     print("-" * 30 + "\n")
 
-    #对给定的数据集进行特征编码和缩放
+    # 对给定的数据集进行特征编码和缩放
 def preprocess_features(data_to_transform, data_to_fit_on, encoder, scaler):
     # 数据划分
     fp_df = data_to_transform[FP_COLUMNS].copy()
@@ -117,7 +117,7 @@ def preprocess_features(data_to_transform, data_to_fit_on, encoder, scaler):
 
 # 2.模型筛选 (Model Selection)
 def run_model_selection():
-    #通过5折交叉验证，系统地评估不同模型、编码器和缩放器的组合。
+    # 通过5折交叉验证，系统地评估不同模型、编码器和缩放器的组合。
     print("--- 开始执行: 模型筛选 ---")
     train_data = pd.read_csv(TRAIN_DATA_PATH)
     kf = KFold(n_splits=5, shuffle=True, random_state=10)
@@ -298,7 +298,7 @@ def train_and_evaluate_final_model(best_params):
 
     return final_model, final_encoder, final_scaler
 
-# 6. 模型解释 (Model Interpretation)
+# 6.模型解释 (Model Interpretation)
 def run_model_interpretation(model, encoder, scaler):
     print("--- 开始执行: 模型解释 ---")
     train_data = pd.read_csv(TRAIN_DATA_PATH)
@@ -309,7 +309,7 @@ def run_model_interpretation(model, encoder, scaler):
     x_test, _ = preprocess_features(test_data, train_data, encoder, scaler)
     x_all = pd.concat([x_train, x_test], axis=0).reset_index(drop=True)
 
-    # --- SHAP 分析 ---
+    # SHAP分析
     print("正在计算SHAP值...")
     explainer = shap.Explainer(model, x_train)
     shap_values_all = explainer(x_all)
@@ -346,7 +346,7 @@ def run_model_interpretation(model, encoder, scaler):
     plt.tight_layout()
     plt.show()
 
-    # --- PDP & ICE 分析 (以 'Monomer A2 concentration' 为例) ---
+    # PDP & ICE 分析 (以 'Monomer A2 concentration' 为例)
     print("\n正在为 'Monomer A2 concentration' 计算PDP/ICE数据...")
 
     feature_to_plot = 'Monomer A2 concentration'
@@ -397,7 +397,7 @@ def run_model_interpretation(model, encoder, scaler):
 
     print("-" * 30 + "\n")
 
-# 7. 主函数入口
+# 7.主函数入口
 if __name__ == '__main__':
     run_data_preprocessing()
     # run_model_selection()
