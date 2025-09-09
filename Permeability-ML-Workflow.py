@@ -1,24 +1,24 @@
 # 导入所需库
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, MaxAbsScaler, RobustScaler, PowerTransformer  # 数值特征标准化归一化
 import category_encoders as ce
-import shap
-import pickle
-import csv
-import ast
-import warnings
 from sklearn.model_selection import ShuffleSplit, KFold
 from sklearn.impute import IterativeImputer
-from sklearn.preprocessing import StandardScaler, MinMaxScaler, MaxAbsScaler, RobustScaler, PowerTransformer
-from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
-from catboost import CatBoostRegressor
+from catboost import CatBoostRegressor  # 典型模型导入与扩展
 from xgboost import XGBRegressor
 from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor, AdaBoostRegressor
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.linear_model import LinearRegression
-from hyperopt import hp, tpe, Trials, fmin, STATUS_OK
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error  # 模型评估RMSE、R2、MAE
+from hyperopt import hp, tpe, Trials, fmin, STATUS_OK  # 超参数调整
+import shap
+import pickle
+import csv
+import ast
 import matplotlib.pyplot as plt
+import warnings
 
 warnings.filterwarnings("ignore")
 
@@ -412,4 +412,5 @@ if __name__ == '__main__':
     run_model_interpretation(final_model, final_encoder, final_scaler)
 
     print("所有流程执行完毕")
+
 
