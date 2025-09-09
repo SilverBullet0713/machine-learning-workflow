@@ -5,8 +5,6 @@ from sklearn.model_selection import ShuffleSplit, KFold
 from sklearn.impute import IterativeImputer
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, MaxAbsScaler, RobustScaler, PowerTransformer  # 数值特征标准化归一化
 import category_encoders as ce
-from sklearn.model_selection import ShuffleSplit, KFold
-from sklearn.impute import IterativeImputer
 from catboost import CatBoostRegressor  # 典型模型导入与扩展
 from xgboost import XGBRegressor
 from sklearn.svm import SVR
@@ -414,6 +412,7 @@ if __name__ == '__main__':
     run_model_interpretation(final_model, final_encoder, final_scaler)
 
     print("所有流程执行完毕")
+
 
 
 
