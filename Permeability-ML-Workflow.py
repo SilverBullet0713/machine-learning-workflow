@@ -1,6 +1,8 @@
 # 导入所需库
 import pandas as pd
 import numpy as np
+from sklearn.model_selection import ShuffleSplit, KFold
+from sklearn.impute import IterativeImputer
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, MaxAbsScaler, RobustScaler, PowerTransformer  # 数值特征标准化归一化
 import category_encoders as ce
 from sklearn.model_selection import ShuffleSplit, KFold
@@ -412,5 +414,6 @@ if __name__ == '__main__':
     run_model_interpretation(final_model, final_encoder, final_scaler)
 
     print("所有流程执行完毕")
+
 
 
